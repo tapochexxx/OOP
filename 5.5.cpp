@@ -1,6 +1,6 @@
-/*Среди столбцов заданной матрицы,
-содержащих только такие элементы, которые по модулю не больше заданного натурального n,
-найти столбец с минимальным произведением элементов*/
+/*РЎСЂРµРґРё СЃС‚РѕР»Р±С†РѕРІ Р·Р°РґР°РЅРЅРѕР№ РјР°С‚СЂРёС†С‹,
+СЃРѕРґРµСЂР¶Р°С‰РёС… С‚РѕР»СЊРєРѕ С‚Р°РєРёРµ СЌР»РµРјРµРЅС‚С‹, РєРѕС‚РѕСЂС‹Рµ РїРѕ РјРѕРґСѓР»СЋ РЅРµ Р±РѕР»СЊС€Рµ Р·Р°РґР°РЅРЅРѕРіРѕ РЅР°С‚СѓСЂР°Р»СЊРЅРѕРіРѕ n,
+РЅР°Р№С‚Рё СЃС‚РѕР»Р±РµС† СЃ РјРёРЅРёРјР°Р»СЊРЅС‹Рј РїСЂРѕРёР·РІРµРґРµРЅРёРµРј СЌР»РµРјРµРЅС‚РѕРІ*/
 
 #include <iostream> 
 #include <vector> 
@@ -8,7 +8,7 @@
 
 using namespace std;
 
-void showMatrix(vector<vector<int>> matrix) // функция вывода матрицы на экран 
+void showMatrix(vector<vector<int>> matrix) // ГґГіГ­ГЄГ¶ГЁГї ГўГ»ГўГ®Г¤Г  Г¬Г ГІГ°ГЁГ¶Г» Г­Г  ГЅГЄГ°Г Г­ 
 
 {
     for (int i = 0; i < matrix.size(); i++)
@@ -19,7 +19,7 @@ void showMatrix(vector<vector<int>> matrix) // функция вывода матрицы на экран
     }
 }
 
-void randMatrix(vector<vector<int>>& matrix, int columns, int n) // функция инициализации матрицы случайными числами 
+void randMatrix(vector<vector<int>>& matrix, int columns, int n) // ГґГіГ­ГЄГ¶ГЁГї ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГЁ Г¬Г ГІГ°ГЁГ¶Г» Г±Г«ГіГ·Г Г©Г­Г»Г¬ГЁ Г·ГЁГ±Г«Г Г¬ГЁ 
 {
     for (int i = 0; i < matrix.size(); i++) {                   
         for (int j = 0; j < matrix[i].size(); j++) { 
@@ -29,7 +29,7 @@ void randMatrix(vector<vector<int>>& matrix, int columns, int n) // функция иниц
     }
 }
 
-int findMinColumn(vector<vector<int>>& matrix) { // функция находящая столбец с минимальным произведением элементов
+int findMinColumn(vector<vector<int>>& matrix) { // ГґГіГ­ГЄГ¶ГЁГї Г­Г ГµГ®Г¤ГїГ№Г Гї Г±ГІГ®Г«ГЎГҐГ¶ Г± Г¬ГЁГ­ГЁГ¬Г Г«ГјГ­Г»Г¬ ГЇГ°Г®ГЁГ§ГўГҐГ¤ГҐГ­ГЁГҐГ¬ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў
     int minMultiple = INT_MAX, counter = 0;
     for (int i = 0; i < matrix.size(); i++) { 
         int multiple = 1;
@@ -53,9 +53,9 @@ int main()
     cout << "Give columns = "; cin >> columns;
     cout << "Give n = "; cin >> n;
 
-    vector<vector<int>> matrix(rows, vector <int>(columns)); // Объявление матрицы на n строк по m элементов
-    randMatrix(matrix, columns, n);  // инициализация 
-    showMatrix(matrix);  // вывод матрицы 
+    vector<vector<int>> matrix(rows, vector <int>(columns)); // ГЋГЎГєГїГўГ«ГҐГ­ГЁГҐ Г¬Г ГІГ°ГЁГ¶Г» Г­Г  n Г±ГІГ°Г®ГЄ ГЇГ® m ГЅГ«ГҐГ¬ГҐГ­ГІГ®Гў
+    randMatrix(matrix, columns, n);  // ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§Г Г¶ГЁГї 
+    showMatrix(matrix);  // ГўГ»ГўГ®Г¤ Г¬Г ГІГ°ГЁГ¶Г» 
     cout << "Column with lowest multiple - " << findMinColumn(matrix)+1;
         
     return 0;

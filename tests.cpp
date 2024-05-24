@@ -1,3 +1,13 @@
+/*Используя класс «Студент» задания 4.2 разработать класс «База данных
+студентов» и определить его методы:
+• Добавление студента в базу данных с вводом данных с клавиатуры
+• Загрузка базы данных из бинарного файла
+• Сохранение базы данных в бинарный файл
+• Вывод на экран
+• Поиска студентов в базе данных
+• Выполнение задания из 4.2.
+Реализовать конструкторы четырёх видов (без параметров, с параметрами, копирования, перемещения) и деструктор.
+*/
 
 #include <iostream>
 #include <string>
@@ -19,7 +29,7 @@ private:
 		double grade;
 
 	public:
-		Student() // ����������� ��� ����������
+		Student() // конструктор без параметров
 		{
 			name = "Ivan";
 			age = rand() % 10 + 25;
@@ -29,7 +39,7 @@ private:
 		}
 
 
-		Student(string cons) // ���� � ���������� 
+		Student(string cons) // ввод с клавиатуры 
 		{
 			cout << " name = ";
 			cin >> name;
@@ -56,11 +66,11 @@ private:
 			cout << endl;
 		}
 
-		~Student() // ����������
+		~Student() // деструктор
 		{
 		}
 
-		Student(const Student& T) // ����������� �����������
+		Student(const Student& T) // конструктор копирования
 		{
 			name = T.name;
 			age = T.age;
@@ -79,7 +89,7 @@ private:
 			return gender;
 		}
 
-		friend ostream& operator<< (ostream& out, Student& E) // �������� ������
+		friend ostream& operator<< (ostream& out, Student& E) // оператор вывода
 		{
 			if (E.gender == true)
 			out << left << setw(7) << E.name << left << setw(5) << E.age << left << setw(5) << E.course << left << setw(12) << "Male" << left << setw(8) << E.grade;
@@ -92,7 +102,7 @@ private:
 
 public:
 
-	Database() // ����������� ��� ����������
+	Database() // конструктор без параметров
 	{
 		for (int i = 0; i < 3; i++)
 		{
@@ -100,7 +110,7 @@ public:
 		}
 	}
 
-	Database(int len) // ����������� c ��������a��
+	Database(int len) // конструктор c параметрaми
 	{
 		for (int i = 0; i < len; i++)
 		{
@@ -108,7 +118,7 @@ public:
 		}
 	}
 
-	Database(string cons) //���������� � ����������
+	Database(string cons) //заполнение с клавиатуры
 	{
 		if (cons == "console")
 		{
@@ -119,7 +129,7 @@ public:
 		}
 	}
 
-	Database(const Database& V) //����������� �����������
+	Database(const Database& V) //конструктор копирования
 	{
 		for (int i = 0; i < 3; i++)
 		{
@@ -127,7 +137,7 @@ public:
 		}
 	}
 
-	~Database() // ����������
+	~Database() // деструктор
 	{
 
 	}
@@ -137,17 +147,17 @@ public:
 		return database[index];
 	}
 
-	int getCourse(int index) // ��������� �����
+	int getCourse(int index) // получение курса
 	{
 		return database[index].getCourse();
 	}
 
-	double getGender(int index) // ��������� ����
+	double getGender(int index) // получение пола
 	{
 		return database[index].getGender();
 	}
 
-	friend ostream& operator<< (ostream& out, Database& E) //�������� ������
+	friend ostream& operator<< (ostream& out, Database& E) //оператор вывода
 	{
 		for (int i = 0; i < 3; i++)
 		{
@@ -158,18 +168,18 @@ public:
 		return out;
 	}
 
-	void getStudent(int index) // ����� ��������
+	void getStudent(int index) // поиск студента
 	{
 		cout << database[index];
 	}
 
-	bool write(ostream& type) // ������ �� �����
+	bool write(ostream& type) // чтение из файла
 	{
 		type.write((char*)this, sizeof(Database));
 		return type.good();
 	}
 
-	bool read(ifstream& type)// ������ � ����
+	bool read(ifstream& type) // запись в файл
 	{
 	type.read((char*)this, sizeof(Database));
 		return type.good();
